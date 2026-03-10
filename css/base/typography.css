@@ -1,0 +1,4 @@
+/* ══ TYPOGRAPHY ══ */
+.serif{font-family:'Cormorant Garamond',serif;}
+.eyebrow{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:400;}
+.eyebrow-muted{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text3);font-weight:400;}

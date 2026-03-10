@@ -1,0 +1,10 @@
+/* ══════════════ PLACEHOLDER SWATCHES ══════════════ */
+.ph{display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-style:italic;color:rgba(232,224,212,.15);font-size:.75rem;text-align:center;}
+.ph1{background:linear-gradient(135deg,#111019,#1D1A26);}
+.ph2{background:linear-gradient(135deg,#120F1A,#1E1828);}
+.ph3{background:linear-gradient(135deg,#100F18,#1A1825);}
+.ph4{background:linear-gradient(135deg,#0F1018,#191B24);}
+.ph5{background:linear-gradient(135deg,#111219,#1D1F26);}
+.ph6{background:linear-gradient(135deg,#130E1C,#1F162A);}
+.ph7{background:linear-gradient(135deg,#0F1014,#191B20);}
+.ph8{background:linear-gradient(135deg,#10100F,#1C1C18);}

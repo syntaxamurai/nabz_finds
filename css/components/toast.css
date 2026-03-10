@@ -1,0 +1,21 @@
+/* ══════════════ TOAST ══════════════ */
+/* ── MEMBER PRICING ── */
+.member-price{color:var(--gold);font-size:.7rem;font-weight:500;letter-spacing:.06em;}
+.member-price .member-tag{font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;background:rgba(200,164,92,.15);color:var(--gold);padding:2px 6px;border:1px solid rgba(200,164,92,.3);margin-right:5px;vertical-align:middle;}
+.member-badge{display:inline-flex;align-items:center;gap:5px;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;background:rgba(200,164,92,.12);color:var(--gold);padding:3px 9px;border:1px solid rgba(200,164,92,.25);}
+.vip-product-tag{position:absolute;top:9px;right:40px;font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;background:var(--gold);color:var(--bg);padding:2px 6px;}
+.early-access-bar{background:linear-gradient(90deg,rgba(200,164,92,.12),rgba(200,164,92,.06));border:1px solid rgba(200,164,92,.2);padding:10px 16px;margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+.early-access-bar svg{flex-shrink:0;color:var(--gold);}
+.early-access-bar p{font-size:.74rem;color:var(--text2);line-height:1.5;}
+.early-access-bar strong{color:var(--gold);}
+/* Sync indicator */
+.sync-dot{width:6px;height:6px;border-radius:50%;background:var(--ok);display:inline-block;margin-left:5px;animation:syncpulse 2s infinite;}
+@keyframes syncpulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+
+/* Real-time update flash */
+@keyframes stockFlash{0%{background:rgba(200,164,92,.18);}100%{background:transparent;}}
+.stock-updated{animation:stockFlash .8s ease-out;}
+
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(90px);background:var(--bg1);color:var(--text);font-size:.74rem;padding:11px 20px;z-index:900;display:flex;align-items:center;gap:8px;transition:transform .35s cubic-bezier(.25,.46,.45,.94);white-space:nowrap;box-shadow:var(--shadow2);border:1px solid var(--border);letter-spacing:.04em;}
+.toast.show{transform:translateX(-50%) translateY(0);}
+.toast-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;}

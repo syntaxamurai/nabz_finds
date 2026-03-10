@@ -1,0 +1,19 @@
+/* ══════════════ ABOUT / CONTACT ══════════════ */
+.about-hero{padding:88px 22px 52px;background:var(--bg2);border-bottom:1px solid var(--border2);}
+.stat-row{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:28px 0;}
+@media(min-width:640px){.stat-row{grid-template-columns:repeat(4,1fr);}}
+.stat-box{text-align:center;padding:20px 10px;border:1px solid var(--border2);background:var(--surface);}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:400;color:var(--gold);}
+.stat-label{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);margin-top:4px;}
+.contact-body{padding-top:88px;}
+.c-form{display:flex;flex-direction:column;gap:13px;margin-top:26px;}
+.c-field{display:flex;flex-direction:column;gap:5px;}
+.c-label{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);}
+.c-input,.c-textarea{background:var(--bg2);border:1px solid var(--border);padding:11px 14px;font-size:.83rem;color:var(--text);outline:none;transition:border-color .2s;}
+.c-input:focus,.c-textarea:focus{border-color:var(--gold);}
+.c-input::placeholder,.c-textarea::placeholder{color:var(--text3);}
+.c-textarea{resize:none;height:100px;}
+.c-opt{display:flex;align-items:center;gap:13px;padding:13px 0;border-bottom:1px solid var(--border2);}
+.c-opt-icon{width:36px;height:36px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--gold);}
+.c-opt-label{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:3px;}
+.c-opt-val{font-size:.83rem;color:var(--text);}

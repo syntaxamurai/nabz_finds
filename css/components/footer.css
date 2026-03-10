@@ -1,0 +1,16 @@
+/* ══════════════ FOOTER ══════════════ */
+.site-footer{background:#050406;padding:52px 22px 28px;border-top:1px solid var(--border2);}
+.footer-brand{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--text);}
+.footer-brand em{font-style:italic;color:var(--gold);}
+.footer-tag{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold3);margin:6px 0 12px;}
+.footer-desc{font-size:.76rem;line-height:1.9;color:var(--text3);margin-bottom:22px;max-width:280px;}
+.footer-socials{display:flex;gap:8px;margin-bottom:36px;}
+.f-social{width:32px;height:32px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.62rem;color:var(--text3);transition:all .2s;}
+.f-social:hover{border-color:var(--gold);color:var(--gold);}
+.footer-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:36px;}
+@media(min-width:640px){.footer-grid{grid-template-columns:repeat(3,1fr);}}
+.f-col-title{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold3);margin-bottom:14px;}
+.f-links{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.f-links a{font-size:.76rem;color:var(--text3);transition:color .2s;cursor:pointer;}
+.f-links a:hover{color:var(--text);}
+.footer-bottom{font-size:.64rem;color:var(--text3);opacity:.4;border-top:1px solid var(--border2);padding-top:20px;text-align:center;}

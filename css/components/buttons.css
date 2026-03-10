@@ -1,0 +1,7 @@
+/* ══════════════ BUTTONS ══════════════ */
+.btn-primary{display:block;text-align:center;font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--bg);background:var(--gold);padding:15px 24px;border:none;cursor:pointer;transition:background .2s;width:100%;}
+.btn-primary:hover{background:var(--gold2);}
+.btn-secondary{display:block;text-align:center;font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--text2);background:none;padding:14px 24px;border:1px solid var(--border);cursor:pointer;transition:all .2s;width:100%;}
+.btn-secondary:hover{border-color:var(--gold);color:var(--gold);}
+.btn-gold-outline{display:inline-flex;align-items:center;gap:7px;font-size:.7rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);background:none;border:1px solid rgba(201,169,110,.4);padding:12px 22px;cursor:pointer;transition:all .2s;}
+.btn-gold-outline:hover{background:rgba(201,169,110,.08);}
