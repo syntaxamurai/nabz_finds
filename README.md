@@ -2,7 +2,7 @@
 
 > Luxury e-commerce website for a Nairobi-based beauty and style brand.
 
-**Live site:** https://YOUR-USERNAME.github.io/nabz-findz  
+**Live site:** [https://syntaxamurai.github.io/nabz_finds/]
 **Admin panel:** sign in with `admin@nabzfindz.com` *(set password on first run — see SETUP.md)*
 
 ---
