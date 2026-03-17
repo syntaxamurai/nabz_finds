@@ -12,14 +12,19 @@ function switchAuth(tab,btn){
   document.getElementById('auth-'+tab).classList.add('active');
   ['li-err','su-err','su-ok'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='none';});
 }
+
 function doLogin(){
   const email=document.getElementById('li-email').value.trim().toLowerCase();
   const pw=document.getElementById('li-pw').value;
   const err=document.getElementById('li-err');
   // Admin shortcut
   if(email==='admin@nabzfindz.com'&&pw===getAdmPw()){
-    session={email,name:'Admin',isAdmin:true};save(K.session,session);
-    closeAuth();openAdmin();return;
+    session={email,name:'Admin',isAdmin:true};
+    save(K.session,session);
+    closeAuth();
+    updateUserNav(); // FIX: was missing — nav icon never turned gold for admin
+    openAdmin();
+    return;
   }
   const user=users.find(u=>u.email===email&&u.pw===btoa(pw));
   if(!user){err.textContent='Incorrect email or password.';err.style.display='block';return;}
@@ -29,6 +34,7 @@ function doLogin(){
   toast('Welcome back, '+user.name.split(' ')[0]+'!');
   goPage('account');
 }
+
 function doSignup(){
   const name=document.getElementById('su-name').value.trim();
   const email=document.getElementById('su-email').value.trim().toLowerCase();
@@ -49,11 +55,13 @@ function doSignup(){
     goPage('account');
   },1000);
 }
+
 function signOut(){
   session=null;save(K.session,null);
   wishlist=new Set();refreshWishUI();renderWishDrawer();
   updateUserNav();renderHome();goPage('home');toast('Signed out.');
 }
+
 function updateUserNav(){
   const btn=document.getElementById('userNavBtn');
   if(session){
@@ -63,9 +71,92 @@ function updateUserNav(){
     btn.style.color='';btn.title='Account';
   }
 }
+
+// ── User nav dropdown ────────────────────────────────────────────────────────
+// FIX: Instead of navigating blindly on click, show a small dropdown that gives
+// the user a "Sign Out" option. This is the only way signOut() was reachable.
 function onUserNavClick(){
-  if(session){
-    if(session.isAdmin)openAdmin();
-    else goPage('account');
-  }else openAuth();
+  if(!session){ openAuth(); return; }
+
+  // If a dropdown is already open, close it and bail
+  const existing=document.getElementById('user-nav-dropdown');
+  if(existing){ existing.remove(); return; }
+
+  const dropdown=document.createElement('div');
+  dropdown.id='user-nav-dropdown';
+  dropdown.style.cssText=[
+    'position:fixed',
+    'top:56px',
+    'right:16px',
+    'background:var(--surface1,#1a1a1a)',
+    'border:1px solid var(--border1,#333)',
+    'border-radius:8px',
+    'box-shadow:0 8px 32px rgba(0,0,0,.45)',
+    'z-index:9999',
+    'min-width:180px',
+    'overflow:hidden',
+    'font-family:var(--font-body,sans-serif)',
+  ].join(';');
+
+  // Header row — shows who is logged in
+  const header=document.createElement('div');
+  header.style.cssText='padding:12px 16px 10px;border-bottom:1px solid var(--border1,#333);';
+  header.innerHTML=`
+    <div style="font-size:.7rem;color:var(--text3,#888);text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px;">
+      ${session.isAdmin ? 'Admin' : 'Signed in as'}
+    </div>
+    <div style="font-size:.82rem;font-weight:600;color:var(--text1,#eee);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:160px;">
+      ${session.name}
+    </div>`;
+  dropdown.appendChild(header);
+
+  // Menu items
+  const items=[];
+
+  if(session.isAdmin){
+    items.push({ label:'Admin Panel', icon:'⚙', action:()=>{ closeDropdown(); openAdmin(); } });
+  } else {
+    items.push({ label:'My Account',  icon:'👤', action:()=>{ closeDropdown(); goPage('account'); } });
+  }
+
+  items.push({ label:'Sign Out', icon:'→', action:()=>{ closeDropdown(); signOut(); }, danger:true });
+
+  items.forEach(item=>{
+    const btn=document.createElement('button');
+    btn.style.cssText=[
+      'display:flex',
+      'align-items:center',
+      'gap:10px',
+      'width:100%',
+      'padding:11px 16px',
+      'background:none',
+      'border:none',
+      'cursor:pointer',
+      'font-size:.82rem',
+      'text-align:left',
+      item.danger ? 'color:var(--gold,#b8935a)' : 'color:var(--text1,#eee)',
+    ].join(';');
+    btn.innerHTML=`<span style="font-size:.9rem;opacity:.7;">${item.icon}</span>${item.label}`;
+    btn.onmouseenter=()=>btn.style.background='rgba(255,255,255,.06)';
+    btn.onmouseleave=()=>btn.style.background='none';
+    btn.onclick=item.action;
+    dropdown.appendChild(btn);
+  });
+
+  document.body.appendChild(dropdown);
+
+  // Close when clicking anywhere outside
+  function closeDropdown(){
+    const d=document.getElementById('user-nav-dropdown');
+    if(d) d.remove();
+    document.removeEventListener('click', outsideClick);
+  }
+  function outsideClick(e){
+    const d=document.getElementById('user-nav-dropdown');
+    if(d && !d.contains(e.target) && e.target.id!=='userNavBtn'){
+      closeDropdown();
+    }
+  }
+  // Delay listener so this click doesn't immediately close it
+  setTimeout(()=>document.addEventListener('click', outsideClick), 0);
 }
